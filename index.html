@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<!-- including head -->
+	<head>
+	<meta charset="UTF-8">
+	<title>ФинСтрой</title>
+	<!--meta-tags-->
+	<meta name="description" content="Бани-бочки на заказ в СПб и Лен. области">
+	<meta name="keywords" content="бани-бочки на заказ">
+	<meta name="author" content="igor uhan | #netcode">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="icon" href="img/icon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" sizes="img/72x72" href="72x72.png">
+	<link rel="apple-touch-icon" sizes="img/114x114" href="114x114.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#000">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#000">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+	<!-- OG-tags -->
+	<meta property="og:title" content="ФинСтрой">
+	<meta property="og:description" content="Бани-бочки на заказ в СПб и Лен. области">
+	<meta property="og:type" content="article">
+	<meta property="og:image" content="img/card4.png">
+	<meta property="og:site_name" content="ФинСтрой">
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:image:width" content="968">
+	<meta property="og:image:height" content="504">
+	<!-- fonts -->
+	<!-- styles -->
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<!-- debuger for smartgrid (delete before production) -->
+	<div class="debuger">
+	<div>
+		<div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+</div>
+
+	<!-- including popups -->
+	<div id="order-popup" class="popup-overlay order-popup">
+	<div class="popup-window">
+		<a href="" id="close"><img src="img/close.png" alt="Закрыть"></a>
+		<h2>Заказать баню</h2>
+		<p>Введите контактные данные, специалист свяжется с вами в ближайшее время</p>
+		<form action="mail.php" class="js-form" id="popupResult" method="post">
+			<input type="text" required name="order-name" id="order-name" placeholder="Имя" class="form-control form__field">
+			<input type="tel" required name="order-tel" id="order-tel" placeholder="Телефон" class="form-control form__field">
+			<input type="email" required name="order-email" id="order-email" placeholder="E-mail" class="form-control form__field">
+			<button data-submit>Заказать</button>
+		</form>
+		<p>Даю согласие на обработку моих персональных данных</p>
+	</div>
+</div>
+
+
+
+	<div id="thanx-popup" class="popup-overlay thanx-popup">
+	<div class="popup-window">
+		<a href="" id="close"><img src="img/close.png" alt="Закрыть"></a>
+		<img src="img/popup-check.png" alt="Спасибо">
+		<h2>Спасибо!</h2>
+		<p>Компания ФинСтрой благодарит за оказанное доверие</p>
+	</div>
+</div>
+
+<div id="loader">
+    <img src="img/ripple.svg">
+</div>
+
+	<!-- including header -->
+	<header id="header" class="header">
+	<div class="container">
+		<h1>Бани - бочки на заказ в СПб и Лен. области</h1>
+		<p>Сроки изготовления от 3 до 7 дней. Возможно изготовление бань по индивидуальным пожеланиям заказчика.</p>
+		<a class="button" href="#constr">Подробнее</a>
+	</div>
+</header>
+	
+	<div id="arrow-down-scroll" class="arrow-nav arrow-down-scroll"></div>
+	<div id="arrow-up-scroll" class="arrow-nav arrow-up-scroll"></div>
+
+	<section id="header-fixed" class="header-fixed">
+		<div class="container">
+			<div class="header-fixed_wrapper">
+				<img src="img/header-logo.png" alt="ФинСтрой">
+
+				<!-- gamburger -->
+				<div class="header-fixed_companyName_less-md">
+					<span>Компания</span> "ФинСтрой"
+					<br><span>8 (800)-976-67-98</span>
+				</div>
+				<div class="hamburger-wrapper">
+					<div class="hamburger hamburger--slider">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</div>
+				</div>
+				<!-- end gamburger -->
+				<nav>
+					<div class="header-contacts">
+						<div class="header-contacts_item header-contacts_item__name"><span>Компания</span> "ФинСтрой"</div>
+						<div class="header-contacts_item">СПБ, Горелово, Таллинское шоссе д. 40 а</div>
+						<div class="header-contacts_item header-contacts_item__right">8 (800)-976-67-98</div>
+					</div>
+					<ul class="header-menu">
+						<li><a href="#header">Главная</a></li>
+						<li><a href="#about">О банях-бочках</a></li>
+						<li><a href="#pref">Преимущества</a></li>
+						<li><a href="#offers">Лучшие предложения</a></li>
+						<li><a href="#reviews">Отзывы</a></li>
+						<li><a href="#contacts">Контакты</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</section>
+	<!-- content here -->
+	<section id="about" class="about">
+		<div class="container">
+			<div class="row">
+				<div class="about-img">
+					<img src="img/about-img.png" alt="Баня-бочка">
+				</div>
+				<div class="about-content">
+					<h2>О банях-бочках</h2>
+					<p>Технология производства наших бань-бочек зародилась много лет назад в  Финляндии. Такая баня представляет собой бочкообразный сруб из хвойных пород дерева с переносной печкой парогенератором. Печка может работать на дровах и на электричестве</p>
+					<p>Наша компания производит бани-бочки из Ели, так как еловая древесина не темнеет, а эфирные масла, которые в ней содержатся, обладают антимикробнм действием. Мы используем чистую ель влажностью 10-12%.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="pref" class="pref">
+		<div class="container">
+			<h2>Почему именно наши бани?</h2>
+			<div class="row">
+				<div class="pref-item">
+					<h3>Мобильность</h3>
+					<p>Баню бочку можно установить в любом месте дачного участка, без фундамента и стройки, а в случае переезда взять ее с собой.</p>
+				</div>
+				<div class="pref-item">
+					<h3>Быстрый нагрев и экономия тепла</h3>
+					<p>Баня-бочка нагревается в течение 40-60 минут,а благодаря своей округлой форме идеально распределяет и сохраняет тепло.</p>
+				</div>
+				<div class="pref-item">
+					<h3>Эстетичный внешний вид</h3>
+					<p>Оригинальный дизайн и эстетичный внешний вид Бани-бочки отлично впишется   в любой приусадебный ландшафт.</p>
+				</div>
+				<div class="pref-item">
+					<h3>Качество и безопасность</h3>
+					<p>Технология сборки проверена временем. Все материалы - экологически чистые. Работаем по договору и даем гарантию 12 месяцев</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="constr" class="constr">
+		<div class="container">
+			<h2>Соберем то, что нужно именно Вам!</h2>
+			<p>Выбирайте детали, которые хотите добавить. Вы можете заказать баню усовершенствованной комплектации и с эксклюзивным дизайном.</p>
+			<form action="mail.php" class="js-form" id="popupResult-constr" method="post">
+				<div class="first-block" id='first-block'>
+					<div class="firstblock-elems">
+						<div class="constr-shower">
+							<div class="img-block">
+								<img src="img/1st-shower.png" alt="Душ">
+							</div>
+							<div class="check-block">
+								<input type="checkbox" class="firstblock-checkbox" id="check-shower" />
+								<label for="check-shower">Душ</label>
+							</div>
+						</div>
+						<div class="constr-electr">
+							<div class="img-block">
+								<img src="img/1st-electr.png" alt="Электрика">
+							</div>
+							<div class="check-block">
+								<input type="checkbox" class="firstblock-checkbox" id="check-electr" />
+								<label for="check-electr">Электрика</label>
+							</div>
+						</div>
+						<div class="constr-wash">
+							<div class="img-block">
+								<img src="img/1st-washer.png" alt="Помывочная">
+							</div>
+							<div class="check-block">
+								<input type="checkbox" class="firstblock-checkbox" id="check-wash" />
+								<label for="check-wash">Помывочная</label>
+							</div>
+						</div>
+						<div class="constr-visor">
+							<div class="img-block">
+								<img src="img/1st-visor.png" alt="Козырек перед входной дверью">
+							</div>
+							<div class="check-block">
+								<input type="checkbox" class="firstblock-checkbox" id="check-visor" />
+								<label for="check-visor">Козырек перед<br> входной дверью</label>
+							</div>
+						</div>
+						<div class="constr-windows">
+							<div class="img-block">
+								<img src="img/1st-windows.png" alt="Окна и двери">
+							</div>
+							<div class="check-block">
+								<input type="checkbox" class="firstblock-checkbox" id="check-windows" />
+								<label for="check-windows">Окна и двери<br> со стеклопакетами</label>
+							</div>
+						</div>
+						<div class="constr-terrace">
+							<div class="img-block">
+								<img src="img/1st-terrace.png" alt="Терасса">
+							</div>
+							<div class="check-block">
+								<input type="checkbox" class="firstblock-checkbox" id="check-terrace" />
+								<label for="check-terrace">Терасса</label>
+							</div>
+						</div>
+						<div class="constr-restroom">
+							<div class="img-block">
+								<img src="img/1st-restroom.png" alt="Комната отдыха">
+							</div>
+							<div class="check-block">
+								<input type="checkbox" class="firstblock-checkbox" id="check-restroom" />
+								<label for="check-restroom">Комната отдыха</label>
+							</div>
+						</div>
+					</div>
+					<p>Приблизительная стоимость: <span id="bath-price">150 000 р.</span></p>
+					<a href="#second-block" id="1stscr-btn" class="button constr-btn">Следующий шаг</a>
+				</div>
+				<div class="second-block hidden-block" id='second-block'>
+					<div class="row">
+						<div class="second-block_content">
+							<div class="second-block_img">
+								<h3 class="mobile-show">Основа бани</h3>
+								<div>
+									<label class="label-img" for="tank"><img src="img/basis1.png" alt=""></label>
+									<input type="radio" id="tank" name="basis" value="танк">
+									<label for="tank" class="label-desc mobile-show">танк</label>
+								</div>
+
+								<div>
+									<label class="label-img" for="viking"><img src="img/basis2.png" alt=""></label>
+									<input type="radio" id="viking" name="basis" value="викинг">
+									<label for="viking" class="label-desc mobile-show">викинг</label>
+								</div>
+
+								<div>
+									<label class="label-img" for="barrel"><img src="img/basis3.png" alt=""></label>
+									<input type="radio" id="barrel" name="basis" value="бочка">
+									<label for="barrel" class="label-desc mobile-show">бочка</label>
+								</div>
+
+								<div>
+									<label class="label-img" for="hut"><img src="img/basis4.png" alt=""></label>
+									<input type="radio" id="hut" name="basis" value="избушка">
+									<label for="hut" class="label-desc mobile-show">избушка</label>
+								</div>
+							</div>
+							<div class="second-block_choise desktop-show">
+								<h3 class="desktop-show">Основа бани</h3>
+								<input type="radio" id="tank" name="basis" value="танк">
+								<label for="tank">танк</label>
+								<input type="radio" id="viking" name="basis" value="викинг">
+								<label for="viking">викинг</label>
+								<input type="radio" id="barrel" name="basis" value="бочка">
+								<label for="barrel">бочка</label>
+								<input type="radio" id="hut" name="basis" value="избушка">
+								<label for="hut">избушка</label>
+							</div>
+						</div>
+						<div class="second-block_content">
+							<div class="second-block_img">
+								<h3 class="mobile-show">Материал</h3>
+
+								<div>
+									<label class="label-img" for="needles"><img src="img/mater1.png" alt=""></label>
+									<input type="radio" id="needles" name="material" value="хвоя">
+									<label for="needles" class="label-desc mobile-show">хвоя</label>
+								</div>
+
+								<div>
+									<label class="label-img" for="spruce"><img src="img/mater2.png" alt=""></label>
+									<input type="radio" id="spruce" name="material" value="отборная ель">
+									<label for="spruce" class="label-desc mobile-show">отборная<br> ель</label>
+								</div>
+
+								<div>
+									<label class="label-img" for="cedar"><img src="img/mater3.png" alt=""></label>
+									<input type="radio" id="cedar" name="material" value="кедр Алтайский">
+									<label for="cedar" class="label-desc mobile-show">кедр<br> Алтайский</label>
+								</div>
+
+								<div>
+									<label class="label-img" for="Larch"><img src="img/mater4.png" alt=""></label>
+									<input type="radio" id="Larch" name="material" value="пол из Лиственницы">
+									<label for="Larch" class="label-desc mobile-show">пол из<br> Лиственницы</label>
+								</div>
+
+							</div>
+							<div class="second-block_choise desktop-show">
+								<h3 class="desktop-show">Материал</h3>
+								<input type="radio" id="needles" name="material" value="хвоя">
+								<label for="needles">хвоя</label>
+								<input type="radio" id="spruce" name="material" value="отборная ель">
+								<label for="spruce">отборная ель</label>
+								<input type="radio" id="cedar" name="material" value="кедр Алтайский">
+								<label for="cedar">кедр Алтайский</label>
+								<input type="radio" id="Larch" name="material" value="пол из Лиственницы">
+								<label for="Larch">пол из<br> Лиственницы</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="second-block_choise-bot">
+							<h3>Диаметр (м)</h3>
+							<input type="radio" id="d2" name="diameter" value="2">
+							<label for="d2">2</label>
+							<input type="radio" id="d2_3" name="diameter" value="2,3">
+							<label for="d2_3">2,3</label>
+							<input type="radio" id="d2_5" name="diameter" value="2,5">
+							<label for="d2_5">2,5</label>
+							<input type="radio" id="d_3" name="diameter" value="3">
+							<label for="d_3">3</label>
+						</div>
+						<div class="second-block_choise-bot">
+							<h3>Длина (м)</h3>
+							<input type="radio" id="w_2" name="width" value="2 (2,5)">
+							<label for="w_2">2 (2,5)</label>
+							<input type="radio" id="w_3" name="width" value="3 (3,5)">
+							<label for="w_3">3 (3,5)</label>
+							<input type="radio" id="w_4_5" name="width" value="5 (4,5)">
+							<label for="w_4_5">5 (4,5)</label>
+							<input type="radio" id="w_5" name="width" value="5">
+							<label for="w_5">5</label>
+						</div>
+						<div class="second-block_choise-bot">
+							<h3>Цвет кровли</h3>
+							<input type="radio" id="r_red" name="roof_color" value="Красный">
+							<label for="r_red">красный</label>
+							<input type="radio" id="r_green" name="roof_color" value="Зеленый">
+							<label for="r_green">зеленый</label>
+							<input type="radio" id="r_brown" name="roof_color" value="Коричневый">
+							<label for="r_brown">коричневый</label>
+							<input type="radio" id="r_other" name="roof_color" value="Другое">
+							<label for="r_other">другое</label>
+						</div>
+						<div class="second-block_choise-bot">
+							<h3>Двери</h3>
+							<input type="radio" id="w_eco" name="door_wood" value="эконом дерево">
+							<label for="w_eco">эконом дерево</label>
+							<input type="radio" id="w_evro" name="door_wood" value="евро дерево">
+							<label for="w_evro">евро дерево</label>
+							<input type="radio" id="w_glass" name="door_wood" value="стеклянные">
+							<label for="w_glass">стеклянные</label>
+						</div>
+						<div class="second-block_choise-bot">
+							<h3>Окошки</h3>
+							<input type="radio" id="win_eco" name="windows" value="эконом">
+							<label for="win_eco">эконом</label>
+							<input type="radio" id="win_dood" name="windows" value="деревянный стеклопакет 40х40">
+							<label for="win_dood">деревянный стеклопакет 40х40</label>
+						</div>
+						<div class="second-block_choise-bot">
+							<h3>Бак под воду</h3>
+							<input type="radio" id="tank_50" name="watertank" value="50 л">
+							<label for="tank_50">50 л</label>
+							<input type="radio" id="tank_80" name="watertank" value="80 л">
+							<label for="tank_80">80 л</label>
+						</div>
+					</div>
+					<p>Приблизительная стоимость: <span id="bath-price">150 000 р.</span></p>
+					<div class="constr-btn-block">
+						<a href="#first-block" id="2ndscr-btn-left" class="button constr-btn-left"></a>
+						<a href="#third-block" id="2ndscr-btn" class="button constr-btn">Следующий шаг</a>
+					</div>
+				</div>
+				<div class="third-block hidden-block" id='third-block'>
+					<div class="row">
+						<div class="third-block_item">
+							<img src="img/3rd-block-1.png" alt="Купель">
+							<div class="third-block_checkblock">
+								<input type="checkbox" id="grillhouse"/>
+								<label for="grillhouse">Гриль домик</label>
+							</div>
+						</div>
+						<div class="third-block_item">
+							<img src="img/3rd-block-2.png" alt="Купель">
+							<div class="third-block_checkblock">
+								<input type="checkbox" id="pool"/>
+								<label for="pool">Купель</label>
+							</div>
+						</div>
+						<div class="third-block_item">
+							<img src="img/3rd-block-3.png" alt="Купель">
+							<div class="third-block_checkblock">
+								<input type="checkbox" id="platform"/>
+								<label for="platform">Площадка</label>
+							</div>
+						</div>
+					</div>
+					<p>Приблизительная стоимость: <span id="bath-price">150 000 р.</span></p>
+					<div class="constr-btn-block">
+						<a href="#second-block" id="3rdscr-btn-left" class="button constr-btn-left"></a>
+						<a href="#fourth-block" id="3rdscr-btn" class="button constr-btn">Следующий шаг</a>
+					</div>
+				</div>
+				<div class="fourth-block hidden-block" id='fourth-block'>
+					<div class="fourth-block_form">
+						<p class="fourth-block_value">Приблизительная стоимость: <span id="constr-price">150 000 р.</span></p>
+						<p class="fourth-block_text">Укажите ваши контактные данные для получения более точного точного расчета стоимости бани</p>
+						<input type="text" name="constr-name" id="constr-name" placeholder="Введите имя" class="form-control form__field" required>
+						<input type="tel" name="constremail" id="constr-email" placeholder="Введите номер телефона" class="form-control form__field" required>
+						<button data-constr>Отправить данные</button>
+						<p class="fourth-block_agreement">Нажимая на кнопку вы  даете согласие на обработку ваших персональных данных</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+	<section id="offers" class="offers">
+		<div class="container">
+			<h2>Наши лучшие предложения</h2>
+			<div class="offers-slider">
+				<div class="offers-one-slide">
+					<div class="row">
+						<!-- ============1st card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card1.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card1.png"></a>
+								</div>
+								<div class="offers-card_hit">Хит</div>
+							</div>
+							
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-бочка</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+								</div>
+							</div>
+						</div>
+						<!-- ============2nd card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card2.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card2-large.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+								</div>
+							</div>
+						</div>
+						<!-- ============3rd card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card3.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card3.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+								</div>
+							</div>
+						</div>
+						<!-- ============4th card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card4.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card4.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="offers-one-slide">
+					<div class="row">
+						<!-- ============1st card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card1.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card1.png"></a>
+								</div>
+								<div class="offers-card_hit">Хит</div>
+							</div>
+							
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-бочка</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+								</div>
+							</div>
+						</div>
+						<!-- ============2nd card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card2.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card2-large.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+								</div>
+							</div>
+						</div>
+						<!-- ============3rd card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card3.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card3.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+								</div>
+							</div>
+						</div>
+						<!-- ============4th card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card4.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card4.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="offers-one-slide">
+					<div class="row">
+						<!-- ============1st card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card1.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card1.png"></a>
+								</div>
+								<div class="offers-card_hit">Хит</div>
+							</div>
+							
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-бочка</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+								</div>
+							</div>
+						</div>
+						<!-- ============2nd card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card2.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card2-large.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+								</div>
+							</div>
+						</div>
+						<!-- ============3rd card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card3.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card3.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
+								</div>
+							</div>
+						</div>
+						<!-- ============4th card=========== -->
+						<div class="offers-card">
+							<div class="offers-card_img">
+								<img src="img/card4.png" alt="Баня-бочка">
+								<div class="offers-card_shader">
+									<a class="offers_card_init" href="img/card4.png"></a>
+								</div>
+							</div>
+							<div class="offers-card_content">
+								<div class="offers-card_title">
+									<h3>Баня-танк</h3>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+								<div class="offers-card_text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco...
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="banner" class="banner">
+		<div class="container">
+			<div class="row">
+				<form action="mail.php" class="js-form" id="popupResult-banner" method="post">
+					<h2>Хотит себе баню-бочку?</h2>
+					<p class="banner-pretitle">Введите ваши контактные данные, специалист свяжется с вами в ближайшее время</p>
+					<input type="text" name="banner-name" id="banner-name" placeholder="Имя" required>
+					<input type="tel" name="banner-tel" id="banner-tel" placeholder="Телефон" required>
+					<button data-banner>Заказать баню</button>
+					<p class="banner_agreement">Нажимая на кнопку вы  даете согласие на обработку ваших персональных данных</p>
+				</form>
+			</div>
+		</div>
+	</section>
+	
+	<section id="details" class="details">
+		<div class="container">
+			<h2>Работы в деталях</h2>
+			<div class="details-slider">
+				<div class="details-one-slide">
+					<div class="row">
+						<!-- ============1st card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-1.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============2nd card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-2.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============3rd card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-3.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============4th card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-4.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============5th card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-5.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============6th card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-6.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="details-one-slide">
+					<div class="row">
+						<!-- ============1st card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-1.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============2nd card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-2.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============3rd card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-3.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============4th card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-4.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============5th card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-5.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+						<!-- ============6th card=========== -->
+						<div class="details-card">
+							<div class="details-card_img">
+								<img src="img/details-6.png" alt="Баня-бочка">
+								<div class="details-card_shader">
+									<h3>Баня-бочка</h3>
+									<p><span>Размер:</span> 4 метра</p>
+									<p><span>Срок сборки:</span> 3 дня</p>
+									<p><span>Цена</span> 300 000 руб.</p>
+									<a class="button order-popup-show" href="#">Заказать</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="reviews" class="reviews">
+		<div class="container">
+			<h2>Что говорят клиенты</h2>
+			<div class="vk-widget">
+				<div id="vk_groups"></div>
+			</div>
+		</div>
+	</section>
+	<section id="contacts" class="contacts">
+		<div class="container">
+			<h2>Контакты</h2>
+			<div class="row">
+				<div class="one-contact">
+					<h3>Санкт-петербург</h3>
+					<div id="map-left"></div>
+					<p><span>Адрес:</span> Ленинградская обл., дер. Никольское, Киевское шоссе, д. 59</p>
+					<p><span>Телефон:</span> 8 (987) 777-38-56</p>
+					<p><span>Режим работы</span> будние дни с 10:00 до 19:00, сб.,вс. - выходные дни</p>
+				</div>
+				<div class="one-contact">
+					<h3>Гатчина</h3>
+					<div id="map-right"></div>
+					<p><span>Адрес:</span> Ленинградская обл., Горелово, Талинское шоссе, д. 40а (500 метров от КАД)</p>
+					<p><span>Телефон:</span> 8 (987) 777-38-56</p>
+					<p><span>Режим работы</span> будние дни с 10:00 до 19:00, сб.,вс. - выходные дни</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- including footer -->
+	<footer id="footer" class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="footer-content">
+				<div class="footer-content_left">
+					<p>ИП Пупулайнен Е.А.</p>
+					<p class="footer-content_phone">8 (981) 456-56-09</p>
+				</div>
+				<img src="img/header-logo.png" alt="ФинСтрой">
+				<div class="footer-content_right">
+					<p>ФинСтрой, 2018 ©</p>
+					<ul>
+						<li><a href="https://www.youtube.com/channel/UCYZ_EBLsd181dYVtiSamiwQ"><img src="img/youtube.png" alt="youtube.png"></a></li>
+						<li><a href="https://vk.com/finstroy"><img src="img/vk.png" alt="vkontakte"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+	<!-- including scripts -->
+	<script src="js/main.js"></script>
+</body>
+</html>
